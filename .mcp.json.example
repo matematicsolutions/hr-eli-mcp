@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "hr-eli-mcp": {
+      "command": "hr-eli-mcp",
+      "env": {
+        "HR_ELI_BASE_URL": "https://narodne-novine.nn.hr",
+        "HR_ELI_CACHE_DIR": "~/.matematic/cache/hr-eli",
+        "HR_ELI_AUDIT_DIR": "~/.matematic/audit"
+      }
+    }
+  }
+}

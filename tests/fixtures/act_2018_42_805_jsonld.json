@@ -1,0 +1,211 @@
+[
+  {
+    "@id": "http://data.europa.eu/eli/ontology#LegalResource"
+  },
+  {
+    "@id": "https://narodne-novine.nn.hr/resource/authority/document-type/ZAKON"
+  },
+  {
+    "@id": "https://narodne-novine.nn.hr/eli/vocabularies/nn-institutions/19505"
+  },
+  {
+    "@id": "http://data.europa.eu/eli/ontology#LegalExpression"
+  },
+  {
+    "@id": "http://publications.europa.eu/resource/authority/language/HRV"
+  },
+  {
+    "@id": "http://data.europa.eu/eli/ontology#Format"
+  },
+  {
+    "@id": "http://www.iana.org/assignments/media-types/text/html"
+  },
+  {
+    "@id": "https:/narodne-novine.nn.hr/eli/sluzbeni/2004/139/2433"
+  },
+  {
+    "@id": "https:/narodne-novine.nn.hr/eli/sluzbeni/2021/61/1193"
+  },
+  {
+    "@id": "https:/narodne-novine.nn.hr/eli/sluzbeni/2025/106/1512"
+  },
+  {
+    "@id": "https:/narodne-novine.nn.hr/eli/sluzbeni/2003/103/1364"
+  },
+  {
+    "@id": "https:/narodne-novine.nn.hr/eli/sluzbeni/2004/105/2031"
+  },
+  {
+    "@id": "http://eurovoc.europa.eu/5181"
+  },
+  {
+    "@id": "https://narodne-novine.nn.hr/eli/vocabularies/nn-legal-area/28"
+  },
+  {
+    "@id": "https://narodne-novine.nn.hr/eli/vocabularies/nn-content-type/1"
+  },
+  {
+    "@id": "https://narodne-novine.nn.hr/eli/vocabularies/nn-index-terms/2152"
+  },
+  {
+    "@id": "https://narodne-novine.nn.hr/eli/vocabularies/nn-index-terms/2255"
+  },
+  {
+    "@id": "https://narodne-novine.nn.hr/eli/vocabularies/nn-index-terms/6143"
+  },
+  {
+    "@id": "https://narodne-novine.nn.hr/eli/sluzbeni/2018/42/805",
+    "@type": [
+      "http://data.europa.eu/eli/ontology#LegalResource"
+    ],
+    "http://data.europa.eu/eli/ontology#type_document": [
+      {
+        "@id": "https://narodne-novine.nn.hr/resource/authority/document-type/ZAKON"
+      }
+    ],
+    "http://data.europa.eu/eli/ontology#number": [
+      {
+        "@value": "805"
+      }
+    ],
+    "http://data.europa.eu/eli/ontology#date_document": [
+      {
+        "@value": "2018-04-27",
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      }
+    ],
+    "http://data.europa.eu/eli/ontology#date_publication": [
+      {
+        "@value": "2018-05-09",
+        "@type": "http://www.w3.org/2001/XMLSchema#date"
+      }
+    ],
+    "http://data.europa.eu/eli/ontology#passed_by": [
+      {
+        "@id": "https://narodne-novine.nn.hr/eli/vocabularies/nn-institutions/19505"
+      }
+    ],
+    "http://data.europa.eu/eli/ontology#is_realized_by": [
+      {
+        "@id": "https://narodne-novine.nn.hr/eli/sluzbeni/2018/42/805/hrv"
+      }
+    ],
+    "http://data.europa.eu/eli/ontology#based_on": [
+      {
+        "@id": "https:/narodne-novine.nn.hr/eli/sluzbeni/2004/139/2433"
+      }
+    ],
+    "http://data.europa.eu/eli/ontology#basis_for": [
+      {
+        "@id": "https:/narodne-novine.nn.hr/eli/sluzbeni/2021/61/1193"
+      },
+      {
+        "@id": "https:/narodne-novine.nn.hr/eli/sluzbeni/2025/106/1512"
+      }
+    ],
+    "http://data.europa.eu/eli/ontology#repeals": [
+      {
+        "@id": "https:/narodne-novine.nn.hr/eli/sluzbeni/2003/103/1364"
+      },
+      {
+        "@id": "https:/narodne-novine.nn.hr/eli/sluzbeni/2004/105/2031"
+      }
+    ],
+    "http://data.europa.eu/eli/ontology#is_about": [
+      {
+        "@id": "http://eurovoc.europa.eu/5181"
+      },
+      {
+        "@id": "https://narodne-novine.nn.hr/eli/vocabularies/nn-legal-area/28"
+      },
+      {
+        "@id": "https://narodne-novine.nn.hr/eli/vocabularies/nn-content-type/1"
+      },
+      {
+        "@id": "https://narodne-novine.nn.hr/eli/vocabularies/nn-index-terms/2152"
+      },
+      {
+        "@id": "https://narodne-novine.nn.hr/eli/vocabularies/nn-index-terms/2255"
+      },
+      {
+        "@id": "https://narodne-novine.nn.hr/eli/vocabularies/nn-index-terms/6143"
+      }
+    ]
+  },
+  {
+    "@id": "https://narodne-novine.nn.hr/eli/sluzbeni/2018/42/805/hrv",
+    "@type": [
+      "http://data.europa.eu/eli/ontology#LegalExpression"
+    ],
+    "http://data.europa.eu/eli/ontology#publisher": [
+      {
+        "@value": "Narodne novine"
+      }
+    ],
+    "http://data.europa.eu/eli/ontology#realizes": [
+      {
+        "@id": "https://narodne-novine.nn.hr/eli/sluzbeni/2018/42/805"
+      }
+    ],
+    "http://data.europa.eu/eli/ontology#language": [
+      {
+        "@id": "http://publications.europa.eu/resource/authority/language/HRV"
+      }
+    ],
+    "http://data.europa.eu/eli/ontology#title": [
+      {
+        "@value": "Zakon o provedbi Opće uredbe o zaštiti podataka"
+      }
+    ],
+    "http://data.europa.eu/eli/ontology#is_embodied_by": [
+      {
+        "@id": "https://narodne-novine.nn.hr/eli/sluzbeni/2018/42/805/hrv/html"
+      },
+      {
+        "@id": "https://narodne-novine.nn.hr/eli/sluzbeni/2018/42/805/hrv/printhtml"
+      }
+    ]
+  },
+  {
+    "@id": "https://narodne-novine.nn.hr/eli/sluzbeni/2018/42/805/hrv/html",
+    "@type": [
+      "http://data.europa.eu/eli/ontology#Format"
+    ],
+    "http://data.europa.eu/eli/ontology#publisher": [
+      {
+        "@value": "Narodne novine"
+      }
+    ],
+    "http://data.europa.eu/eli/ontology#embodies": [
+      {
+        "@id": "https://narodne-novine.nn.hr/eli/sluzbeni/2018/42/805/hrv"
+      }
+    ],
+    "http://data.europa.eu/eli/ontology#format": [
+      {
+        "@id": "http://www.iana.org/assignments/media-types/text/html"
+      }
+    ]
+  },
+  {
+    "@id": "https://narodne-novine.nn.hr/eli/sluzbeni/2018/42/805/hrv/printhtml",
+    "@type": [
+      "http://data.europa.eu/eli/ontology#Format"
+    ],
+    "http://data.europa.eu/eli/ontology#publisher": [
+      {
+        "@value": "Narodne novine"
+      }
+    ],
+    "http://data.europa.eu/eli/ontology#embodies": [
+      {
+        "@id": "https://narodne-novine.nn.hr/eli/sluzbeni/2018/42/805/hrv"
+      }
+    ],
+    "http://data.europa.eu/eli/ontology#format": [
+      {
+        "@id": "http://www.iana.org/assignments/media-types/text/html"
+      }
+    ]
+  }
+]
