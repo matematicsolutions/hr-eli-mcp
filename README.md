@@ -29,6 +29,14 @@ Every response carries the contract: `eli_uri` (the European ELI URL, e.g.
 
 ## Install
 
+Run it with no install step (once published to PyPI):
+
+```bash
+uvx hr-eli-mcp
+```
+
+Or from source:
+
 ```bash
 cd hr-eli-mcp
 pip install -e .
