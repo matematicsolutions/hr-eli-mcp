@@ -1,5 +1,7 @@
 # hr-eli-mcp
 
+<!-- mcp-name: io.github.matematicsolutions/hr-eli-mcp -->
+
 An MCP server for the Croatian **Narodne novine** official gazette (`narodne-novine.nn.hr`). It
 fetches Croatian legislation with European ELI identifiers and verifiable citations.
 
