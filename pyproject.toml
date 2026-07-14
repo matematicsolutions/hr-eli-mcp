@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "hr-eli-mcp"
-version = "0.1.1"
+version = "0.2.0"
 description = "MCP server for the Croatian Narodne novine official gazette (narodne-novine.nn.hr) - fetch Croatian legislation with European ELI identifiers and verifiable citations."
 readme = "README.md"
 license = { text = "Apache-2.0" }
