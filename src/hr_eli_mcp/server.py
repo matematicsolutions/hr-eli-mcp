@@ -37,6 +37,7 @@ This MCP server exposes the Croatian Official Gazette, Narodne novine (narodne-n
 
 ## Hard constraints
 
+- **Do not answer past the edge of this corpus** - when a search comes back empty, or the question touches material this connector does not carry, call `hr_coverage` and relay what it says is missing. Absence here is not absence in the law.
 - **No free-text search** - addressed by ELI coordinate (year + issue + doc), not keywords. A Croatian citation gives the issue/year (e.g. "NN 42/2018"); use `hr_list_issue` to find the `doc`. Relay the `dataset_note`.
 - **ELI is the key to citability** - the ELI is the `narodne-novine.nn.hr/eli/sluzbeni/...` URL; do not invent it. It is built from the coordinates and confirmed against the document's JSON-LD.
 - **Text is the official HTML** - `hr_get_text` returns the gazette's HTML rendering verbatim; do not paraphrase it as the legal text.
