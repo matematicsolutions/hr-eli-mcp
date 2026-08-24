@@ -24,6 +24,7 @@ European ELI ontology (`data.europa.eu/eli`), with JSON-LD metadata per document
 | `hr_list_issue` | List the documents of a gazette issue by year + issue (discovery). |
 | `hr_get_act` | Metadata for a document by year + issue + doc number. |
 | `hr_get_text` | Full official HTML text of a document. |
+| `hr_coverage` | Declare what this connector covers, when each family was captured, and - explicitly - what it does NOT cover. Every gap carries a fallback. |
 
 Every response carries the contract: `eli_uri` (the European ELI URL, e.g.
 `https://narodne-novine.nn.hr/eli/sluzbeni/2018/42/805`), `human_readable_citation`
