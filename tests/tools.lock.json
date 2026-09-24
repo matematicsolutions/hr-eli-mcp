@@ -1,0 +1,583 @@
+{
+  "package_version": "0.3.3",
+  "tools": {
+    "hr_coverage": {
+      "descriptor": {
+        "annotations": {
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true,
+          "readOnlyHint": true
+        },
+        "description": "Declare what this connector covers, how it is sourced, and what it does NOT cover.\n\nCall this before telling a user that the law \"does not contain\" something, and whenever\na search comes back empty: the absence may be a gap in this connector rather than in the\nlaw. Every gap carries a fallback saying where to look instead.\n\nReturns:\n    ``Coverage`` with families, an as-of note, and a non-empty list of known gaps.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {},
+          "type": "object"
+        },
+        "meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        },
+        "name": "hr_coverage",
+        "outputSchema": {
+          "additionalProperties": true,
+          "description": "What this connector covers, how it is sourced, and what it does not cover.",
+          "properties": {
+            "as_of_note": {
+              "description": "States what the dates mean, and what they do not promise.",
+              "type": "string"
+            },
+            "families": {
+              "items": {
+                "additionalProperties": true,
+                "description": "One data family this connector exposes.",
+                "properties": {
+                  "captured_at": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null,
+                    "description": "Date this family was last captured (ISO). None when queried live."
+                  },
+                  "live": {
+                    "default": true,
+                    "description": "True when queried live instead of from a snapshot.",
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "description": "Data family, e.g. 'Federal legislation'.",
+                    "type": "string"
+                  },
+                  "source": {
+                    "description": "Official source the data comes from.",
+                    "type": "string"
+                  },
+                  "tool": {
+                    "description": "Tool or tools that reach this family.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "tool",
+                  "source"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "known_gaps": {
+              "description": "Never empty. An empty list would mean 'not checked', not 'no gaps'.",
+              "items": {
+                "additionalProperties": true,
+                "description": "A known, named hole in this connector's coverage - plus the way around it.",
+                "properties": {
+                  "fallback": {
+                    "description": "Where to go instead.",
+                    "type": "string"
+                  },
+                  "family": {
+                    "description": "Which family the gap belongs to.",
+                    "type": "string"
+                  },
+                  "id": {
+                    "description": "Stable gap identifier.",
+                    "type": "string"
+                  },
+                  "missing": {
+                    "description": "What is NOT available through this connector.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "family",
+                  "missing",
+                  "fallback"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "status": {
+              "default": "ok",
+              "enum": [
+                "ok",
+                "degraded",
+                "failed"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "as_of_note"
+          ],
+          "type": "object"
+        }
+      },
+      "sha256": "4b3cd8e8c8c2562f749c8676500c5d2a15363bd9894c5c6b7b441d8f05f01b7c"
+    },
+    "hr_get_act": {
+      "descriptor": {
+        "annotations": {
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true,
+          "readOnlyHint": true
+        },
+        "description": "Fetch document metadata by ELI coordinate (year + issue + doc).",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "doc": {
+              "description": "document number within the issue, e.g. ``805``.",
+              "type": "integer"
+            },
+            "issue": {
+              "description": "gazette issue, e.g. ``42``.",
+              "type": "integer"
+            },
+            "year": {
+              "description": "e.g. ``2018``.",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "year",
+            "issue",
+            "doc"
+          ],
+          "type": "object"
+        },
+        "meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        },
+        "name": "hr_get_act",
+        "outputSchema": {
+          "additionalProperties": true,
+          "description": "A Croatian official-gazette document (from JSON-LD metadata).",
+          "properties": {
+            "dataset_note": {
+              "default": "Narodne novine (the Croatian Official Gazette) is ELI-native (European ELI ontology, data.europa.eu/eli). Documents are addressed by year + issue + doc number (eli/sluzbeni/{year}/{issue}/{doc}); discover the documents of a gazette issue via hr_list_issue. Metadata comes from JSON-LD; full text is the official HTML rendering. There is no free-text search. Coverage 1990-present. Language: Croatian.",
+              "type": "string"
+            },
+            "date_document": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "date_publication": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "doc": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "eli_uri": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "human_readable_citation": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "issue": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "number": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "source_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "type_document": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "year": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            }
+          },
+          "type": "object"
+        }
+      },
+      "sha256": "ae7429a24d574aef9e5d37dbc5549d62ddb348a970d11b1788cd1406bfd0c1bf"
+    },
+    "hr_get_text": {
+      "descriptor": {
+        "annotations": {
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true,
+          "readOnlyHint": true
+        },
+        "description": "Fetch the full official HTML text of a document by ELI coordinate.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "doc": {
+              "description": "document number within the issue, e.g. ``805``.",
+              "type": "integer"
+            },
+            "issue": {
+              "description": "gazette issue, e.g. ``42``.",
+              "type": "integer"
+            },
+            "year": {
+              "description": "e.g. ``2018``.",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "year",
+            "issue",
+            "doc"
+          ],
+          "type": "object"
+        },
+        "meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        },
+        "name": "hr_get_text",
+        "outputSchema": {
+          "additionalProperties": true,
+          "description": "Result of ``hr_get_text`` (official HTML rendering).",
+          "properties": {
+            "byte_size": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "content": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "dataset_note": {
+              "default": "Narodne novine (the Croatian Official Gazette) is ELI-native (European ELI ontology, data.europa.eu/eli). Documents are addressed by year + issue + doc number (eli/sluzbeni/{year}/{issue}/{doc}); discover the documents of a gazette issue via hr_list_issue. Metadata comes from JSON-LD; full text is the official HTML rendering. There is no free-text search. Coverage 1990-present. Language: Croatian.",
+              "type": "string"
+            },
+            "doc": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "eli_uri": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "format": {
+              "default": "html",
+              "type": "string"
+            },
+            "human_readable_citation": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "issue": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "source_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            },
+            "year": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
+            }
+          },
+          "type": "object"
+        }
+      },
+      "sha256": "7022d9c2bdf8b6d256b4d746dbfc69923aa550a446a25236a99e612aa66e3bd1"
+    },
+    "hr_list_issue": {
+      "descriptor": {
+        "annotations": {
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": true,
+          "readOnlyHint": true
+        },
+        "description": "List the documents published in a Narodne novine gazette issue.",
+        "inputSchema": {
+          "additionalProperties": false,
+          "properties": {
+            "issue": {
+              "description": "gazette issue number, e.g. ``42`` (from a citation like \"NN 42/2018\").",
+              "type": "integer"
+            },
+            "year": {
+              "description": "e.g. ``2018``.",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "year",
+            "issue"
+          ],
+          "type": "object"
+        },
+        "meta": {
+          "fastmcp": {
+            "tags": []
+          }
+        },
+        "name": "hr_list_issue",
+        "outputSchema": {
+          "additionalProperties": true,
+          "description": "Result of ``hr_list_issue``.",
+          "properties": {
+            "dataset_note": {
+              "default": "Narodne novine (the Croatian Official Gazette) is ELI-native (European ELI ontology, data.europa.eu/eli). Documents are addressed by year + issue + doc number (eli/sluzbeni/{year}/{issue}/{doc}); discover the documents of a gazette issue via hr_list_issue. Metadata comes from JSON-LD; full text is the official HTML rendering. There is no free-text search. Coverage 1990-present. Language: Croatian.",
+              "type": "string"
+            },
+            "issue": {
+              "type": "integer"
+            },
+            "items": {
+              "items": {
+                "additionalProperties": true,
+                "description": "A single document in a gazette issue listing.",
+                "properties": {
+                  "doc": {
+                    "anyOf": [
+                      {
+                        "type": "integer"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null
+                  },
+                  "eli_uri": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null
+                  },
+                  "issue": {
+                    "anyOf": [
+                      {
+                        "type": "integer"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null
+                  },
+                  "source_url": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null
+                  },
+                  "year": {
+                    "anyOf": [
+                      {
+                        "type": "integer"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ],
+                    "default": null
+                  }
+                },
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "total": {
+              "type": "integer"
+            },
+            "year": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "year",
+            "issue",
+            "total"
+          ],
+          "type": "object"
+        }
+      },
+      "sha256": "fff4f583ddbc4469ec3c17320ffe39e2d840760c500a1f94ae4d0e9768fc3d60"
+    }
+  },
+  "toolset_sha256": "6ab370038f6f7630b998571cbc2bff7b17c5acdf36954e13400af0e91703517d"
+}
